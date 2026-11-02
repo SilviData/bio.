@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bio Slvi Data</title>
+<meta name="description" content="Todos los links de Silvana Guardia: SilviData, portafolio, redes y canales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&family=Roboto+Mono:wght@400;500;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --papel: #F6F8FD;
+  --hoja: #FFFFFF;
+  --cuadricula: rgba(43, 99, 230, 0.13);
+  --renglon: rgba(43, 99, 230, 0.09);
+  --tinta: #1A2233;
+  --tinta-suave: #4A5468;
+  --azul: #2B63E6;
+  --azul-claro: #DCE6FC;
+  --verde: #1E8F4C;
+
+  --sans: 'Roboto', system-ui, sans-serif;
+  --mono: 'Roboto Mono', ui-monospace, monospace;
+  --mano: 'Caveat', cursive;
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--mono);
+  color: var(--tinta);
+  background-color: var(--papel);
+  background-image:
+    linear-gradient(var(--cuadricula) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cuadricula) 1px, transparent 1px);
+  background-size: 24px 24px;
+  padding-block: 32px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 3px;
+}
+
+.hoja {
+  position: relative;
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 28px 22px 30px 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  background-color: var(--hoja);
+  background-image: linear-gradient(var(--renglon) 1px, transparent 1px);
+  background-size: 100% 28px;
+  border: 2px solid var(--tinta);
+  box-shadow: 6px 6px 0 var(--tinta);
+}
+
+.hoja::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 14px;
+  width: 14px;
+  background: radial-gradient(circle at 7px 7px, var(--tinta) 5px, transparent 5.5px) 0 0 / 14px 34px repeat-y;
+}
+
+.cabecera {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 8px;
+}
+
+.burbuja {
+  position: relative;
+  justify-self: start;
+  margin: 0;
+  padding: 8px 14px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: var(--hoja);
+  border: 2px solid var(--tinta);
+  border-radius: 999px;
+}
+
+.burbuja::after {
+  content: "";
+  position: absolute;
+  left: 26px;
+  bottom: -9px;
+  width: 12px;
+  height: 12px;
+  background: var(--hoja);
+  border-right: 2px solid var(--tinta);
+  border-bottom: 2px solid var(--tinta);
+  transform: rotate(45deg);
+}
+
+.avatar {
+  grid-row: span 2;
+  width: 130px;
+  height: auto;
+  transform: rotate(4deg);
+}
+
+.presentacion {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 10px;
+}
+
+.fino { font-weight: 150; }
+.grueso { font-weight: 900; }
+
+.nombre {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 38px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--azul);
+}
+
+.lema {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--tinta-suave);
+}
+
+.ficha {
+  position: relative;
+  padding: 16px 18px;
+  background: var(--azul);
+  color: #FFFFFF;
+  transform: rotate(-1.5deg);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.ficha__clip {
+  position: absolute;
+  top: -18px;
+  left: 22px;
+  width: 34px;
+  height: 40px;
+}
+
+.ficha strong {
+  display: block;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.ficha ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ficha li::before {
+  content: "- ";
+}
+
+.estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 3px 10px;
+  background: #FFFFFF;
+  color: var(--verde);
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+.estado::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--verde);
+  border-radius: 50%;
+}
+
+.ventana {
+  background: var(--hoja);
+  border: 2px solid var(--tinta);
+}
+
+.ventana__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 4px 4px 10px;
+  background: var(--azul-claro);
+  border-bottom: 2px solid var(--tinta);
+}
+
+.ventana__titulo {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ventana__boton {
+  width: 26px;
+  height: 22px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: var(--hoja);
+  color: var(--tinta);
+  border: 2px solid var(--tinta);
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ventana__boton:hover {
+  background: var(--azul);
+  color: #FFFFFF;
+}
+
+.ventana__cuerpo {
+  padding: 8px;
+}
+
+.links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 6px 12px 6px 6px;
+  text-decoration: none;
+  border: 2px solid var(--tinta);
+  background: var(--hoja);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.link:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--azul);
+}
+
+.link__icono {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: var(--azul);
+  color: #FFFFFF;
+  font-family: var(--sans);
+  font-size: 13px;
+}
+
+.link__icono--verde {
+  background: var(--verde);
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.link__texto {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.link__nombre {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.link__detalle {
+  font-size: 12px;
+  color: var(--tinta-suave);
+  overflow-wrap: anywhere;
+}
+
+.link__flecha {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--azul);
+}
+
+.link--destacado {
+  background: var(--azul);
+  color: #FFFFFF;
+}
+
+.link--destacado .link__icono {
+  background: #FFFFFF;
+  color: var(--azul);
+}
+
+.link--destacado .link__detalle,
+.link--destacado .link__flecha {
+  color: #FFFFFF;
+}
+
+.link--destacado:hover {
+  box-shadow: 3px 3px 0 var(--tinta);
+}
+
+.inventario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+}
+
+.inventario li {
+  padding: 4px 10px;
+  border: 2px solid var(--tinta);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.inventario li:nth-child(3n + 1) { background: var(--azul-claro); }
+.inventario li:nth-child(3n)     { border-style: dashed; }
+
+/* Pie */
+.pie {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pie__nota {
+  margin: 0;
+  font-family: var(--mano);
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--azul);
+  transform: rotate(-3deg);
+}
+
+.pie__gato {
+  width: 120px;
+  height: auto;
+}
+
+.derechos {
+  margin: 0;
+  font-size: 11px;
+  text-align: center;
+  color: var(--tinta-suave);
+}
+
+@media (max-width: 420px) {
+  .hoja { padding: 22px 14px 24px 38px; }
+  .hoja::before { left: 10px; }
+  .avatar { width: 104px; }
+  .nombre { font-size: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link { transition: none; }
+  .link:hover { transform: none; }
+}
+</style>
+<link rel="icon" href="assets/gato-brillitos.png">
+</head>
+<body>
+<main class="hoja">
+
+  <header class="cabecera">
+    <p class="burbuja">¡Hola, soy Silvi!</p>
+    <img class="avatar" src="assets/gato-brillitos.png" alt="Gato de SilviData con ojos brillantes">
+    <div class="presentacion">
+      <h1 class="nombre"><span class="fino">Silvi</span><span class="grueso">Data</span></h1>
+      <p class="lema">Datos, chismes de internet y gatos. Llegas por la curiosidad, te quedas por la historia.</p>
+    </div>
+  </header>
+
+  <section class="ficha" aria-label="Sobre mí">
+    <svg class="ficha__clip" viewBox="0 0 34 40" aria-hidden="true">
+      <rect x="3" y="14" width="28" height="22" fill="#1A2233"/>
+      <path d="M8 16 L 8 4 Q 8 1 11 1 L 23 1 Q 26 1 26 4 L 26 16" fill="none" stroke="#C9CED8" stroke-width="2.5"/>
+      <rect x="3" y="14" width="28" height="4" fill="#3A4256"/>
+    </svg>
+    <strong>Silvana Guardia</strong>
+    <ul>
+      <li>Business Intelligence · Lima, Perú</li>
+      <li>Investigo cosas a las 3 a.m.</li>
+      <li>Convierto preguntas en dashboards</li>
+    </ul>
+    <span class="estado">Open to work</span>
+  </section>
+
+  <section class="ventana" aria-labelledby="t-links">
+    <div class="ventana__barra">
+      <h2 class="ventana__titulo" id="t-links">links.exe</h2>
+      <button class="ventana__boton" type="button" aria-expanded="true" aria-controls="c-links" aria-label="Minimizar links">_</button>
+    </div>
+    <div class="ventana__cuerpo" id="c-links">
+      <ul class="links">
+        <li>
+          <a class="link link--destacado" href="https://silvidata.github.io/">
+            <span class="link__icono" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20 h8 M12 16 v4"/></svg>
+            </span>
+            <span class="link__texto"><span class="link__nombre">Mi portafolio</span><span class="link__detalle">Proyectos, artículos y recursos</span></span>
+            <span class="link__flecha" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://www.tiktok.com/@silvidata">
+            <span class="link__icono" aria-hidden="true">TT</span>
+            <span class="link__texto"><span class="link__nombre">TikTok</span><span class="link__detalle">[@tu-usuario]</span></span>
+            <span class="link__flecha" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://www.instagram.com/silvidata/">
+            <span class="link__icono" aria-hidden="true"><img class="logo" src="assets/instagram.png" alt=""></span>
+            <span class="link__texto"><span class="link__nombre">Instagram</span><span class="link__detalle">[@tu-usuario]</span></span>
+            <span class="link__flecha" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://www.threads.com/@silvidata/">
+            <span class="link__icono" aria-hidden="true"><img class="logo" src="assets/threads.png" alt=""></span>
+            <span class="link__texto"><span class="link__nombre">Threads</span><span class="link__detalle">[@tu-usuario]</span></span>
+            <span class="link__flecha" aria-hidden="true">→</span>
+          </a>
+        </li>        
+        <li>
+          <a class="link" href="https://www.youtube.com/@silvidata">
+            <span class="link__icono" aria-hidden="true"><img class="logo" src="assets/youtube.png" alt=""></span>
+            <span class="link__texto"><span class="link__nombre">YouTube</span><span class="link__detalle">Investigaciones largas</span></span>
+            <span class="link__flecha" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ventana" aria-labelledby="t-pro">
+    <div class="ventana__barra">
+      <h2 class="ventana__titulo" id="t-pro">trabajo.txt</h2>
+      <button class="ventana__boton" type="button" aria-expanded="true" aria-controls="c-pro" aria-label="Minimizar trabajo">_</button>
+    </div>
+    <div class="ventana__cuerpo" id="c-pro">
+      <ul class="links">
+        <li>
+          <a class="link" href="https://www.linkedin.com/company/103997061/admin/edit/?editPageActiveTab=info">
+            <span class="link__icono" aria-hidden="true"><img class="logo" src="assets/linkedin.png" alt=""></span>
+            <span class="link__texto"><span class="link__nombre">LinkedIn</span><span class="link__detalle">Experiencia y contacto</span></span>
+            <span class="link__flecha" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://public.tableau.com/app/profile/silvana.guardia/vizzes">
+            <span class="link__icono link__icono--verde" aria-hidden="true">TB</span>
+            <span class="link__texto"><span class="link__nombre">Tableau Public</span><span class="link__detalle">Mis dashboards</span></span>
+            <span class="link__flecha" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://www.behance.net/silvanaguardia">
+            <span class="link__icono" aria-hidden="true"><img class="logo" src="assets/behance.png" alt=""></span>
+            <span class="link__texto"><span class="link__nombre">Behance</span><span class="link__detalle">Proyectos creativos con datos</span></span>
+            <span class="link__flecha" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="link" href="https://github.com/SilviData">
+            <span class="link__icono link__icono--verde" aria-hidden="true">GH</span>
+            <span class="link__texto"><span class="link__nombre">GitHub</span><span class="link__detalle">Código de mis proyectos</span></span>
+            <span class="link__flecha" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="ventana" aria-labelledby="t-inv">
+    <div class="ventana__barra">
+      <h2 class="ventana__titulo" id="t-inv">inventario</h2>
+      <button class="ventana__boton" type="button" aria-expanded="true" aria-controls="c-inv" aria-label="Minimizar inventario">_</button>
+    </div>
+    <div class="ventana__cuerpo" id="c-inv">
+      <ul class="inventario">
+        <li>Power BI</li>
+        <li>Tableau</li>
+        <li>SQL</li>
+        <li>Excel</li>
+        <li>AppSheet</li>
+        <li>Python</li>
+        <li>Café</li>
+        <li>Gato</li>
+      </ul>
+    </div>
+  </section>
+
+  <a class="link link--destacado" href="https://discord.gg/tAD7pzTNd">
+    <span class="link__icono" aria-hidden="true">?</span>
+    <span class="link__texto"><span class="link__nombre">Pídeme un recurso</span><span class="link__detalle">¿Qué plantilla o guía te serviría?</span></span>
+    <span class="link__flecha" aria-hidden="true">→</span>
+  </a>
+
+  <footer class="pie">
+    <p class="pie__nota">gracias por pasar ♡</p>
+    <img class="pie__gato" src="assets/gato-durmiendo.png" alt="Gato de SilviData durmiendo">
+  </footer>
+  <p class="derechos">© 2026 Silvana Guardia · Lima, Perú</p>
+
+</main>
+
+<script>
+  document.querySelectorAll('.ventana__boton').forEach((boton) => {
+    boton.addEventListener('click', () => {
+      const cuerpo = document.getElementById(boton.getAttribute('aria-controls'));
+      const abierta = boton.getAttribute('aria-expanded') === 'true';
+      cuerpo.hidden = abierta;
+      boton.setAttribute('aria-expanded', String(!abierta));
+      boton.textContent = abierta ? '□' : '_';
+    });
+  });
+</script>
+</body>
+</html>
